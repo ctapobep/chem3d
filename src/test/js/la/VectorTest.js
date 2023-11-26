@@ -12,9 +12,13 @@ describe("Vector", () => {
     });
     it("can return normalized version of itself with length=1", ()=> {
         assert.deepStrictEqual(new Vector(1, 0, 0).normalized(), new Vector(1, 0, 0));
-        assert.deepEqual(new Vector(1, 0, 1).normalized(), new Vector(1/Math.sqrt(2), 0, 1/Math.sqrt(2)));
+        assert.deepStrictEqual(new Vector(1, 0, 1).normalized(), new Vector(1/Math.sqrt(2), 0, 1/Math.sqrt(2)));
     });
     it("errs if normalization is invoked for a zero vector", ()=> {
         assert.throws(() => new Vector(0).normalized());
+    });
+    it("can be added to another vector", () => {
+        assert.deepStrictEqual(new Vector(1, 0, 0).add(new Vector(1, 1, 2)), new Vector(2, 1, 2));
+        assert.deepStrictEqual(new Vector(0, 0, 0).add(new Vector(0,-1,1)), new Vector(0, -1, 1));
     });
 })

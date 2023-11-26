@@ -1,4 +1,5 @@
 export default class Vector {
+    static ZERO3D = new Vector(0, 0, 0);
     /** @type {number[]} */
     values;
 
@@ -37,6 +38,14 @@ export default class Vector {
         const result = [];
         for (let i = 0; i < this.values.length; i++)
             result[i] = this.values[i] * scalar;
+        return new Vector(...result);
+    }
+
+    /** @param {Vector} that */
+    add(that) {
+        const result = [];
+        for (let i = 0; i < this.values.length; i++)
+            result.push(this.get(i) + that.get(i));
         return new Vector(...result);
     }
 
