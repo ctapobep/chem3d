@@ -35,14 +35,9 @@ export default class Particle {
         return this.#position;
     }
 
-    /**
-     *
-     * @param {Vector} position
-     * @return {Vector}
-     */
-    getField(position) {
-        const distance = position.subtr(this.pos);
-        return distance.normalized().scaled(this.#charge / (2*Math.PI * distance.dot(distance)));
+    /** @return {number} */
+    get charge() {
+        return this.#charge;
     }
 
     /**
