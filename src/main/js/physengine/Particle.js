@@ -1,6 +1,7 @@
 import Vector from "../la/Vector.js";
 
 export default class Particle {
+
     /** @type {number} */
     #charge;
     /** @type {number} */
@@ -12,6 +13,12 @@ export default class Particle {
     /** @type {Vector} */
     #acceleration = Vector.ZERO3D;
 
+    /**
+     *
+     * @param {Vector} position
+     * @param {number} mass
+     * @param {number} charge
+     */
     constructor(position, mass, charge) {
         this.#charge = charge;
         this.#position = position;
@@ -24,8 +31,18 @@ export default class Particle {
     }
 
     /** @returns {Vector} */
-    get position() {
+    get pos() {
         return this.#position;
+    }
+
+    /**
+     *
+     * @param {Vector} position
+     * @return {Vector}
+     */
+    getField(position) {
+        const distance = position.subtr(this.pos);
+        return distance.normalized().scaled(this.#charge / (2*Math.PI * distance.dot(distance)));
     }
 
     /**
