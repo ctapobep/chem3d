@@ -8,4 +8,12 @@ export default class TimeInterval {
     constructor(seconds) {
         this.seconds = seconds;
     }
+
+    /**
+     *
+     * @param {number} n
+     */
+    static nanosec(n) {
+        return new TimeInterval(n * 1e-9);
+    }
 }

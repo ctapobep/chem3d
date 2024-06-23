@@ -51,4 +51,12 @@ export default class Particle {
             .add(this.#acceleration.scaled(sec*sec*.5));
         this.#velocity = this.#velocity.add(this.#acceleration.scaled(sec));
     }
+    /**
+     * @param {Vector} force
+     * @param {TimeInterval} timeInterval
+     */
+    applyForce(force, timeInterval) {
+        this.#acceleration = this.#acceleration.add(force.scaled(1/this.#mass));
+        this.move(timeInterval);
+    }
 }
